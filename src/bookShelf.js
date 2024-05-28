@@ -250,15 +250,15 @@ function BookShelf() {
                 <td>{item.author}</td>
                 <td>{item.published}</td>
                 <td>
-                  <button className="btnTable" onClick={() => editBook(item)}>
+                  <button className="btnTable" 
+                    onClick={() => editBook(item)}>
                     <ModeIcon />
                   </button>
                 </td>
                 <td>
                   <button
                     className="btnTable"
-                    onClick={() => deletBook(item.id)}
-                  >
+                     onClick={() => deletBook(item.id)}>
                     <DeleteForeverIcon />
                   </button>
                 </td>
