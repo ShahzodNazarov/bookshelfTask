@@ -1,0 +1,195 @@
+body {
+  background-image: url(./backGroundImg/bookshelf.jpg);
+}
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.row {
+  width: 30%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid darkslategrey;
+  background-color: rgba(15, 8, 8, 0.8);
+  @media (max-width: 1200px) {
+    width: 40%;
+  }
+  @media (max-width: 768px) {
+    width: 70%;
+  }
+  @media (max-width: 480px) {
+    width: 90%;
+  }
+  button {
+    margin-top: 10px;
+    background: none;
+    color: white;
+    height: 45px;
+    width: 50%;
+    &:hover {
+      background-color: black;
+      color: aqua;
+    }
+  }
+
+  form {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      color: white;
+    }
+    label {
+      color: white;
+      margin-top: 10px;
+      align-self: flex-start;
+    }
+    input {
+      height: 45px;
+      background-color: rgb(235, 245, 235);
+    }
+  }
+  .passwordCheckerSignup {
+    color: red;
+  }
+  .disableCheckerSignup {
+    display: none;
+  }
+  .passwordCheckerLogin {
+    color: red;
+  }
+  .disableCheckerLogin {
+    display: none;
+  }
+  .wrapper {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    p {
+      margin-top: 20px;
+      color: white;
+      font-size: 14px;
+      &:hover {
+        color: aqua;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// beginning style of the bookshelf component <---------
+
+.container-fluid {
+  width: 100%;
+  height: 100vh;
+  padding-top: 10px;
+  .row-top {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    padding: 0px 30px;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      color: white;
+      cursor: pointer;
+      &:hover {
+        color: darkslategray;
+      }
+    }
+  }
+  .rowBody {
+    width: 90%;
+    height: 80vh;
+    margin: 20px auto;
+    position: relative;
+    .addBookButton {
+      position: absolute;
+      top: -40px;
+      right: 0px;
+      margin: 5px;
+      display: flex;
+      color: white;
+      align-items: center;
+      justify-content: center;
+      background-color: darkslategrey;
+    }
+  }
+}
+.addBookModal {
+  width: 450px;
+  height: 340px;
+  @media (max-width: 450px) {
+    width: 350px;
+  }
+  .Wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .saveBtn {
+    height: 40px;
+    width: 80px;
+    color: white;
+    margin-top: 20px;
+    align-self: center;
+    background-color: black;
+    &:hover {
+      background-color: darkslategray;
+    }
+  }
+}
+.btnTable {
+  border: none;
+  background: none;
+  &:hover {
+    background-color: cadetblue;
+  }
+}
+#table {
+  @media (max-width: 430px) {
+    margin: -15px;
+  }
+  @media (max-width: 400px) {
+    margin: -26px;
+  }
+}
+.showPassword {
+  position: absolute;
+  top: 242px;
+  right: 20px;
+  border: none;
+  display: flex;
+  border-radius: 50%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 20px !important;
+  height: 20px !important;
+  @media (max-width: 450px) {
+    top: 235px;
+  }
+}
+.showPasswordLogin {
+  position: absolute;
+  top: 162px;
+  right: 20px;
+  border: none;
+  display: flex;
+  text-align: center;
+  border-radius: 50%;
+  align-items: center;
+  width: 20px !important;
+  height: 20px !important;
+  justify-content: center;
+  @media (max-width: 450px) {
+    top: 155px;
+  }
+}
