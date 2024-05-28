@@ -111,23 +111,39 @@ function BookShelf() {
     },
   });
 
-  function saveBook() {
-    let bookObject = {
-      published: publishedData,
-      name: bookName,
-      author: author,
-      userID: uuid(),
-      bookId: uuid(),
-    };
-    if (!edit) {
-      postBook.mutate(bookObject);
+  function checkDataEmpty() {
+    if (
+      publishedData.trim() != "" &&
+      bookName.trim() != "" &&
+      author.trim() != ""
+    ) {
+      return true;
     } else {
-      editBookQuery.mutate(bookObject);
-      setedit(false);
+      return false;
     }
-    setOpen(false);
-    resetData();
-    refreshData();
+  }
+
+  function saveBook() {
+    if (checkDataEmpty()) {
+      let bookObject = {
+        published: publishedData,
+        name: bookName,
+        author: author,
+        userID: uuid(),
+        bookId: uuid(),
+      };
+      if (!edit) {
+        postBook.mutate(bookObject);
+      } else {
+        editBookQuery.mutate(bookObject);
+        setedit(false);
+      }
+      setOpen(false);
+      resetData();
+      refreshData();
+    } else {
+      getToast("input must be empty");
+    }
   }
 
   function deletBook(id) {
@@ -151,27 +167,26 @@ function BookShelf() {
 
   return (
     <div className="container-fluid">
-
       <div className="row-top">
         <h2>all Books in BookShelf</h2>
-          <h2 onClick={logOutShelf}>
+        <h2 onClick={logOutShelf}>
           {name ?? "Admin"} <LogoutIcon />{" "}
-          </h2>
+        </h2>
       </div>
 
       <div className="rowBody">
         <button onClick={onOpenModal} className="addBookButton">
           <AddRoundedIcon /> Book{" "}
         </button>
-          <Modal
-            open={open}
-            onClose={onCloseModal}
-            center
-            classNames={{
+        <Modal
+          open={open}
+          onClose={onCloseModal}
+          center
+          classNames={{
             overlay: "customOverlay",
             modal: "addBookModal",
           }}
-          >
+        >
           <div className="Wrapper">
             <h2>{edit ? "edit book" : "add book"}</h2>
           </div>
@@ -216,7 +231,6 @@ function BookShelf() {
         </Modal>
 
         <table className="table table-success table-striped mt-5" id="table">
-
           <thead>
             <tr>
               <th>t/r</th>
@@ -236,23 +250,21 @@ function BookShelf() {
                 <td>{item.author}</td>
                 <td>{item.published}</td>
                 <td>
-                  <button
-                   className="btnTable"
-                   onClick={() => editBook(item)}>
+                  <button className="btnTable" onClick={() => editBook(item)}>
                     <ModeIcon />
                   </button>
                 </td>
                 <td>
                   <button
                     className="btnTable"
-                    onClick={() => deletBook(item.id)} >
+                    onClick={() => deletBook(item.id)}
+                  >
                     <DeleteForeverIcon />
                   </button>
                 </td>
               </tr>
             ))}
           </tbody>
-
         </table>
         <ToastContainer />
       </div>
